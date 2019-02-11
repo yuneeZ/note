@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>KY</title>
+<link rel="stylesheet" type="text/css" href="/css/info.css">
+<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+</head>
+<body>
+<!-- [D] 전페이지 공통 건너띄기 링크 제공 -->
+<ul id="skip">
+<li><a href="#nav" onclick="document.getElementById('nav').tabIndex=-1;document.getElementById('nav').focus();return false;">주 메뉴 바로가기</a></li>
+<li><a href="#content" onclick="document.getElementById('content').tabIndex=-1;document.getElementById('content').focus();return false">본문 바로가기</a></li>
+</ul>
+<!-- //[D] 전페이지 공통 건너띄기 링크 제공 -->
+
+<hr>
+
+<div id="wrap">
+    <header>
+        <h1 class="tit">KA YUN, CHO</h1>
+        <p class="info">Front-End Developer</p>
+        <nav id="nav">
+            <ul class="gnb">
+                <li><a href="#about">about me</a></li>
+                <li><a href="#project">project</a></li>
+                <li><a href="#contact">contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <hr>
+
+    <main id="content" role="main">
+        <section id="about" class="section_note">
+            <h2 class="tit">about me</h2>
+        </section>
+        <section id="project" class="section_note">
+            <h2 class="tit">project</h2>
+        </section>
+        <section id="contact" class="section_note">
+            <h2 class="tit">contact</h2>
+        </section>
+    </main>
+
+    <hr>
+
+    <footer>
+        <address>
+            <a href="mailto:305952@naver.com">305952@naver.com</a>
+        </address>
+    </footer>
+</div>
+</body>
+</html>

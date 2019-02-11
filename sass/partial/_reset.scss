@@ -11,6 +11,7 @@ html, body {
 }
 body {
     font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', '맑은 고딕', 'Malgun Gothic', sans-serif;
+    font-size: 13px;
 }
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
@@ -37,10 +38,12 @@ address, caption, em {
     font-style: normal;
 }
 a {
+    color: #333;
+    text-decoration: none;
+
     &:focus,
     &:active,
     &:hover {
-        color: #333;
         text-decoration: none;
     }
 }

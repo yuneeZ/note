@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+@mixin clearfix {
+    zoom: 1;
+
+    &:after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+}

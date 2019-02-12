@@ -52,7 +52,7 @@ gulp.task('styles', function() {
 gulp.task('sass', function() {
     return gulp.src(sass_path)
         .pipe(sourcemaps.init())
-        .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(sourcemaps.write('../css/'))
         .pipe(gulpif('*.map', frep(pattern)))
         .pipe(gulp.dest('../css/'));

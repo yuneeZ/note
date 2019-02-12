@@ -5,11 +5,13 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, p, table, th, td, for
   padding: 0;
 }
 
-html, body {
+html {
   height: 100%;
+  -webkit-text-size-adjust: none;
 }
 
 body {
+  height: 100%;
   font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', '맑은 고딕', 'Malgun Gothic', sans-serif;
   font-size: 13px;
 }
@@ -126,7 +128,11 @@ header .info {
 
 .gnb li {
   float: left;
-  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.gnb li:first-child {
+  margin-left: 0;
 }
 
 .gnb li a {
@@ -144,26 +150,51 @@ header .info {
   color: #111;
 }
 
-.section_note {
+footer {
+  margin-top: 50px;
+  padding: 30px 0;
+  border-top: 1px solid #eee;
+  font-size: 12px;
+  color: #999;
+}
+
+footer a {
+  color: #999;
+}
+
+section[class^='section_'] {
   margin-top: 30px;
   padding-top: 30px;
   border-top: 1px solid #eee;
 }
 
-.section_note .tit {
+section[class^='section_'] .tit {
   display: inline-block;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   padding-bottom: 6px;
   border-bottom: 2px solid #ccc;
   font-size: 22px;
 }
 
+.section_about .dot_lst .min {
+  min-width: 154px;
+}
+
+.about_me {
+  margin: 0 0 20px 10px;
+}
+
+.about_me dt, .about_me dd {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
 .group {
-  margin-top: 7%;
+  margin-top: 76px;
 }
 
 .group:first-of-type {
-  margin-top: 0;
+  margin-top: 20px;
 }
 
 .group .in_place {
@@ -192,8 +223,9 @@ header .info {
 
 .project_lst {
   zoom: 1;
-  margin-top: 15px;
+  margin-top: -25px;
   padding-left: 10px;
+  font-size: 0;
 }
 
 .project_lst:after {
@@ -203,19 +235,30 @@ header .info {
 }
 
 .project_lst li {
-  float: left;
-  width: 33.3%;
+  display: inline-block;
+  *display: inline;
+  width: 30.3%;
+  margin-top: 40px;
+  padding-right: 3%;
   line-height: 24px;
+  vertical-align: top;
 }
 
 .project_lst p {
-  color: #666;
   font-size: 13px;
+  color: #666;
 }
 
 .project_lst .project {
   font-size: 14px;
   font-weight: normal;
+}
+
+.project_lst .desc {
+  display: inline-block;
+  font-size: 12px;
+  color: #666;
+  vertical-align: top;
 }
 
 .project_lst .link a {
@@ -240,7 +283,7 @@ header .info {
   text-decoration: underline;
 }
 
-.project_lst .info {
+.project_lst .skill {
   display: inline-block;
   padding: 0 4px;
   border-radius: 3px;
@@ -249,44 +292,105 @@ header .info {
   line-height: 17px;
 }
 
-.project_lst .info.web {
-  background: blue;
+.project_lst .skill.web {
+  background: #6291e9;
 }
 
-.project_lst .info.mobile {
-  background: pink;
+.project_lst .skill.mobile {
+  background: #0dcdbd;
 }
 
-.project_lst .info.html5 {
-  background: gray;
+.project_lst .skill.html5 {
+  background: #f6831d;
 }
 
-.project_lst .info.css3 {
-  background: red;
+.project_lst .skill.css3 {
+  background: #9e84d7;
 }
 
-.project_lst .info.responsive {
-  background: chartreuse;
+.project_lst .skill.responsive {
+  background: #00baff;
 }
 
-.project_lst .info.javascript {
-  background: wheat;
+.project_lst .skill.javascript {
+  background: #82b981;
 }
 
-.project_lst .info.accesibility {
-  background: orange;
+.project_lst .skill.accesibility {
+  background: #fa8072;
 }
 
-.project_lst .info.award {
-  background: blue;
+.project_lst .skill.award {
+  background: #f45196;
 }
 
-.project_lst .info.aem {
-  background: gray;
+.project_lst .skill.aem {
+  background: #a6a6a6;
 }
 
-.project_lst .info.app {
-  background: salmon;
+.project_lst .skill.app {
+  background: #9292b7;
+}
+
+.dot_lst {
+  padding-left: 10px;
+}
+
+.dot_lst li {
+  position: relative;
+  margin-top: 10px;
+  padding-left: 10px;
+}
+
+.dot_lst li:first-child {
+  margin-top: 0;
+}
+
+.dot_lst li:before {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 3px;
+  height: 3px;
+  margin: -1px 7px 1px 0;
+  border-radius: 3px;
+  background: #333;
+  vertical-align: middle;
+  content: '';
+}
+
+.dot_lst li a:hover {
+  text-decoration: underline;
+}
+
+.dot_lst li .min {
+  display: inline-block;
+  min-width: 40px;
+}
+
+.dot_lst .total {
+  margin-top: 15px;
+  font-size: 15px;
+}
+
+.dot_lst .total:before {
+  top: 11px;
+}
+
+@media screen and (max-width: 767px) {
+  .gnb li {
+    margin-left: 14px;
+  }
+  .gnb li a {
+    font-size: 22px;
+  }
+  .project_lst {
+    padding-left: 0;
+  }
+  .project_lst li {
+    display: list-item;
+    width: auto;
+  }
 }
 
 /*# sourceMappingURL=../css/info.css.map */

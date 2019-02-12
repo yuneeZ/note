@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 @import "partial/reset";
-@import "partial/mixins";
+@import "partial/variables";
 
 #wrap {
     margin: 30px 5%;
@@ -21,8 +21,11 @@ header {
 
     li {
         float: left;
-        margin-right: 20px;
+        margin-left: 20px;
 
+        &:first-child {
+            margin-left: 0;
+        }
         a {
             display: block;
             padding: 0 5px;
@@ -41,24 +44,50 @@ header {
         }
     }
 }
-.section_note {
+footer {
+    margin-top: 50px;
+    padding: 30px 0;
+    border-top: 1px solid #eee;
+    font-size: 12px;
+    color: #999;
+
+    a {
+        color: #999;
+    }
+}
+section[class^='section_'] {
     margin-top: 30px;
     padding-top: 30px;
     border-top: 1px solid #eee;
 
     .tit {
         display: inline-block;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
         padding-bottom: 6px;
         border-bottom: 2px solid #ccc;
         font-size: 22px;
     }
 }
+.section_about {
+    .dot_lst {
+        .min {
+            min-width: 154px;
+        }
+    }
+}
+.about_me {
+    margin: 0 0 20px 10px;
+
+    dt, dd {
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+}
 .group {
-    margin-top: 7%;
+    margin-top: 76px;
 
     &:first-of-type {
-        margin-top: 0;
+        margin-top: 20px;
     }
     .in_place {
         display: inline-block;
@@ -85,21 +114,32 @@ header {
 }
 .project_lst {
     @include clearfix;
-    margin-top: 15px;
+    margin-top: -25px;
     padding-left: 10px;
+    font-size: 0;
 
     li {
-        float: left;
-        width: 33.3%;
+        display: inline-block;
+        *display: inline;
+        width: 30.3%;
+        margin-top: 40px;
+        padding-right: 3%;
         line-height: 24px;
+        vertical-align: top;
     }
     p {
-        color: #666;
         font-size: 13px;
+        color: #666;
     }
     .project {
         font-size: 14px;
         font-weight: normal;
+    }
+    .desc {
+        display: inline-block;
+        font-size: 12px;
+        color: #666;
+        vertical-align: top;
     }
     .link {
         a {
@@ -125,7 +165,7 @@ header {
             }
         }
     }
-    .info {
+    .skill {
         display: inline-block;
         padding: 0 4px;
         border-radius: 3px;
@@ -134,34 +174,94 @@ header {
         line-height: 17px;
 
         &.web {
-            background: blue;
+            background: #6291e9;
         }
         &.mobile {
-            background: pink;
+            background: #0dcdbd;
         }
         &.html5 {
-            background: gray;
+            background: #f6831d;
         }
         &.css3 {
-            background: red;
+            background: #9e84d7;
         }
         &.responsive {
-            background: chartreuse;
+            background: #00baff;
         }
         &.javascript {
-            background: wheat;
+            background: #82b981;
         }
         &.accesibility {
-            background: orange;
+            background: #fa8072;
         }
         &.award {
-            background: blue;
+            background: #f45196;
         }
         &.aem {
-            background: gray;
+            background: #a6a6a6;
         }
         &.app {
-            background: salmon;
+            background: #9292b7;
+        }
+    }
+}
+.dot_lst {
+    padding-left: 10px;
+
+    li {
+        position: relative;
+        margin-top: 10px;
+        padding-left: 10px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+        &:before {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            width: 3px;
+            height: 3px;
+            margin: -1px 7px 1px 0;
+            border-radius: 3px;
+            background: #333;
+            vertical-align: middle;
+            content: '';
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .min {
+            display: inline-block;
+            min-width: 40px;
+        }
+    }
+    .total {
+        margin-top: 15px;
+        font-size: 15px;
+
+        &:before {
+            top: 11px;
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint) {
+    .gnb {
+        li {
+            margin-left: 14px;
+
+            a {
+                font-size: 22px;
+            }
+        }
+    }
+    .project_lst {
+        padding-left: 0;
+
+        li {
+            display: list-item;
+            width: auto;
         }
     }
 }

@@ -68,13 +68,6 @@ section[class^='section_'] {
         font-size: 22px;
     }
 }
-.section_about {
-    .dot_lst {
-        .min {
-            min-width: 154px;
-        }
-    }
-}
 .about_me {
     margin: 0 0 20px 10px;
 
@@ -91,41 +84,27 @@ section[class^='section_'] {
     }
     .in_place {
         display: inline-block;
-        margin-bottom: 6px;
+        *display: inline;
         padding: 0 3px;
         background: #aaa;
         font-size: 17px;
         color: #fff;
     }
-    .working {
-        color: #666;
-
-        &:before {
-            display: inline-block;
-            width: 3px;
-            height: 3px;
-            margin: -1px 7px 1px 0;
-            border-radius: 3px;
-            background: #999;
-            vertical-align: middle;
-            content: '';
-        }
-    }
 }
 .project_lst {
     @include clearfix;
-    margin-top: -25px;
-    padding-left: 10px;
+    margin: -20px 0 0 10px;
     font-size: 0;
 
     li {
         display: inline-block;
-        *display: inline;
         width: 30.3%;
         margin-top: 40px;
         padding-right: 3%;
         line-height: 24px;
         vertical-align: top;
+        *float: left;
+        *min-height: 150px;
     }
     p {
         font-size: 13px;
@@ -206,7 +185,7 @@ section[class^='section_'] {
     }
 }
 .dot_lst {
-    padding-left: 10px;
+    margin-left: 10px;
 
     li {
         position: relative;
@@ -231,10 +210,10 @@ section[class^='section_'] {
         a:hover {
             text-decoration: underline;
         }
-        .min {
-            display: inline-block;
-            min-width: 40px;
-        }
+    }
+    .min {
+        display: inline-block;
+        min-width: 154px;
     }
     .total {
         margin-top: 15px;
@@ -257,7 +236,7 @@ section[class^='section_'] {
         }
     }
     .project_lst {
-        padding-left: 0;
+        margin-left: 0;
 
         li {
             display: list-item;

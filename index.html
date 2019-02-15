@@ -30,8 +30,8 @@
     <header>
         <h1 class="tit">KA YUN, CHO</h1>
         <p class="info">Front-End Developer</p>
-        <nav id="nav">
-            <ul class="gnb">
+        <nav id="nav" class="nav">
+            <ul>
                 <li><a href="#about">about me</a></li>
                 <li><a href="#project">project</a></li>
                 <li><a href="#contact">contact</a></li>
@@ -55,8 +55,8 @@
                 <li><span class="min">(프리) 2017.09 - 2017.09</span> 마이다스아이티</li>
                 <li><span class="min">(프리) 2017.06 - 2017.08</span> 29CM 개발팀</li>
                 <li><span class="min">2013.02 - 2017.05</span> 하이브랩</li>
-                <li class="total">총 경력 : 6년</li>
             </ul>
+            <p class="total_career">총 경력 : <strong class="year">6</strong>년 <span class="month"></span>개월</p>
         </section>
         <section id="project" class="section_project">
             <h2 class="tit">project</h2>
@@ -441,6 +441,7 @@
                     </li>
                 </ul>
             </div>
+            </p>
         </section>
         <section id="contact" class="section_contact">
             <h2 class="tit">contact</h2>
@@ -457,5 +458,86 @@
         <p>© 2019 KaYun. all rights reserved.</p>
     </footer>
 </div>
+<script src="./js/libs/jquery-3.3.1.min.js"></script>
+<script>
+(function ($) {
+    'use strict';
+    var note = window.note || {};
+
+    note.nav = function () {
+        this.init();
+    };
+    note.nav.prototype = {
+        init : function () {
+            this.setElements();
+            this.fixedFunc();
+            this.bindEvent();
+        },
+        setElements : function () {
+            this.ele = $('.nav');
+            this.lk = this.ele.find('a');
+            this.win = $(window);
+            this.body = $('body');
+            this.offestTop = this.ele.offset().top;
+            this.scrollTop = 0;
+        },
+        bindEvent : function() {
+            this.win.on('scroll', $.proxy(this.scrollFunc, this));
+            this.lk.on('click', $.proxy(this.clickFunc, this));
+        },
+        scrollFunc : function() {
+            this.scrollTop = this.win.scrollTop();
+            if ( this.scrollTop > this.offestTop ) {
+                this.ele.addClass('fixed');
+            }
+            else {
+                this.ele.removeClass('fixed');
+            }
+        },
+        fixedFunc : function() {
+            if (this.win.scrollTop() > this.offestTop) {
+                this.ele.addClass('fixed');
+            }
+        },
+        clickFunc : function(e) {
+            var _this = $(e.target);
+            var scrollPosition = $(_this.attr('href')).offset().top;
+
+            $('html, body').stop().animate({
+                scrollTop : scrollPosition
+            }, 500);
+
+            _this.parents('li').addClass('selected').siblings().removeClass();
+        }
+    }
+
+    note.dateCheck = function () {
+        this.init();
+    };
+    note.dateCheck.prototype = {
+        init : function () {
+
+var now = new Date();
+var then = new Date("february 19,2013");
+var gap = now.getTime() - then.getTime();
+gap = Math.floor(gap / (1000 * 60 * 60 * 24));
+
+console.log( 'gap % 12 :: ', gap % 12 );
+console.log( 'now_day -- gap :: ', gap );
+console.log( 'now_month -- parseInt gap :: ', parseInt(gap/30) );
+
+var totalPeriod = parseInt(gap/30);
+var year = parseInt(totalPeriod / 12);
+var month = totalPeriod % 12;
+
+        }
+    }
+
+    $(function () {
+        var nav = new note.nav();
+        var dateCheck = new note.dateCheck();
+    });
+})(window.jQuery);
+</script>
 </body>
 </html>

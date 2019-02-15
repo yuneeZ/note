@@ -15,10 +15,13 @@ header {
         color: #999;
     }
 }
-.gnb {
-    @include clearfix;
-    margin-top: 20px;
+.nav {
+    background: #fff;
 
+    ul {
+        @include clearfix;
+        margin-top: 20px;
+    }
     li {
         float: left;
         margin-left: 20px;
@@ -41,6 +44,21 @@ header {
                 background: none;
                 color: #111;
             }
+        }
+    }
+    &.fixed {
+        position: fixed;
+        top: 0;
+        right: 5%;
+        left: 5%;
+        z-index: 100;
+        padding: 0 0 30px;
+        border-bottom: 1px solid #eee;
+    }
+    .selected {
+        a {
+            background: none;
+            color: #111;
         }
     }
 }
@@ -74,6 +92,24 @@ section[class^='section_'] {
     dt, dd {
         margin-bottom: 10px;
         font-size: 14px;
+    }
+}
+.total_career {
+    margin: 10px 0 0 10px;
+    font-size: 14px;
+
+    &:before {
+        display: inline-block;
+        width: 3px;
+        height: 3px;
+        margin: -1px 7px 1px 0;
+        border-radius: 3px;
+        background: #333;
+        vertical-align: middle;
+        content: '';
+    }
+    strong {
+        font-weight: normal;
     }
 }
 .group {
@@ -226,7 +262,7 @@ section[class^='section_'] {
 }
 
 @media screen and (max-width: $breakpoint) {
-    .gnb {
+    .nav {
         li {
             margin-left: 14px;
 

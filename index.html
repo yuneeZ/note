@@ -56,7 +56,7 @@
                 <li><span class="min">(프리) 2017.06 - 2017.08</span> 29CM 개발팀</li>
                 <li><span class="min">2013.02 - 2017.05</span> 하이브랩</li>
             </ul>
-            <p class="total_career">총 경력 : <strong class="year">6</strong>년 <span class="month"></span>개월</p>
+            <p class="total_career">총 경력 : <strong class="num"></strong></p>
         </section>
         <section id="project" class="section_project">
             <h2 class="tit">project</h2>
@@ -511,25 +511,45 @@
         }
     }
 
-    note.dateCheck = function () {
+    note.dateCheck = function (args) {
+        var defParams = {
+            totalCareer : '.total_career',
+            totalNum : '.num',
+            rusult : null
+        };
+        this.opts = $.extend({}, defParams, (args || {}));
+        if (!(this.totalObj = $(this.opts.totalCareer)).length) return;
         this.init();
     };
     note.dateCheck.prototype = {
         init : function () {
+            this.setElements();
+            this.dateFunc();
+        },
+        setElements : function () {
+            this.then = new Date("Feb 19, 2013");
+            this.now = new Date();
+            this.years = this.now.getFullYear() - this.then.getFullYear();
+            this.months = this.now.getMonth() - this.then.getMonth();
+            this.days = this.now.getDate() - this.then.getDate();
+            this.differentMonth = this.years * 12 + this.months + (this.days >= 0 ? 0 : -1);
 
-var now = new Date();
-var then = new Date("february 19,2013");
-var gap = now.getTime() - then.getTime();
-gap = Math.floor(gap / (1000 * 60 * 60 * 24));
-
-console.log( 'gap % 12 :: ', gap % 12 );
-console.log( 'now_day -- gap :: ', gap );
-console.log( 'now_month -- parseInt gap :: ', parseInt(gap/30) );
-
-var totalPeriod = parseInt(gap/30);
-var year = parseInt(totalPeriod / 12);
-var month = totalPeriod % 12;
-
+            this.careerTxt = $(this.opts.totalCareer);
+            this.totalNum = this.careerTxt.find(this.opts.totalNum);
+        },
+        dateFunc : function () {
+            if (this.differentMonth >= 12) {
+                var ttYear = Math.floor(this.differentMonth / 12);
+                var ttMonth = Math.floor(this.differentMonth % 12);
+                this.result = ttYear + '년 '
+                if (ttMonth != 0) {
+                    this.result += ttMonth + '개월';
+                }
+            } else {
+                this.result = this.differentMonth + '개월';
+            }
+            this.totalNum.text(this.result);
+            return this.result;
         }
     }
 
